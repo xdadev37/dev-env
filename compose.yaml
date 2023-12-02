@@ -22,7 +22,7 @@ services:
   vscode:
     image: gitpod/openvscode-server
     environment:
-      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet/dotnet:/var/node/node
     volumes:
       - vscode:/home/workspace
       - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
