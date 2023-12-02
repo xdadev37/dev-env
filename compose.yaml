@@ -24,7 +24,7 @@ services:
   donet:
     image: mcr.microsoft.com/dotnet/sdk
     volumes:
-      - user:/usr/bin
+      - usr:/usr/bin
     extends:
       service: common
       file: ./common.yaml
