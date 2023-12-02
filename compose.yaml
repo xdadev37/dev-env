@@ -4,9 +4,11 @@ services:
   vscode:
     image: gitpod/openvscode-server
     volumes:
-      - vscode:/home/workspace:rw
-      - /home/${HOME}/.ssh:/home/openvscode-server/.ssh:rw
-      - /home/${HOME}:/home/${HOME}:rw
+      - vscode:/home/workspace
+      - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
+      - /home/${HOME}:/home/${HOME}
+      - user:/usr/bin
+      - usrLocal:/usr/local/bin
     extends:
       service: common
       file: ./common.yaml
@@ -14,7 +16,7 @@ services:
   node:
     image: node
     volumes:
-      - node:/usr/local/bin/node:ro
+      - usrLocal:/usr/local/bin
     extends:
       service: common
       file: ./common.yaml
@@ -22,7 +24,7 @@ services:
   donet:
     image: mcr.microsoft.com/dotnet/sdk
     volumes:
-      - dotnet:/usr/bin/dotnet:ro
+      - user:/usr/bin
     extends:
       service: common
       file: ./common.yaml
@@ -30,7 +32,7 @@ services:
   docker:
     image: docker
     volumes:
-      - docker:/usr/local/bin/docker:ro
+      - usrLocal:/usr/local/bin
     extends:
       service: common
       file: ./common.yaml
@@ -38,9 +40,7 @@ services:
 volumes:
   vscode:
     name: vscode
-  docker:
+  usrLocal:
     name: docker
-  node:
+  usr:
     name: node
-  dotnet:
-    name: dotnet
