@@ -21,6 +21,7 @@ services:
 
   vscode:
     image: gitpod/openvscode-server
+    privileged: true
     environment:
       PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node
     volumes:
