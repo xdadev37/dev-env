@@ -7,7 +7,7 @@ services:
       - vscode:/home/workspace
       - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
       - /home/${HOME}:/home/${HOME}
-      - user:/usr/bin
+      - usr:/usr/bin
       - usrLocal:/usr/local/bin
     extends:
       service: common
