@@ -42,6 +42,6 @@ volumes:
   vscode:
     name: vscode
   usrLocal:
-    name: docker
+    name: usrLocal
   usr:
-    name: node
+    name: usr
