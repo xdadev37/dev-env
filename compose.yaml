@@ -28,7 +28,7 @@ services:
       - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
       - /home/${HOME}:/home/${HOME}
       - dotnet:/var/dotnet:ro
-      - node:/vat/node:ro
+      - node:/var/node:ro
       - /var/run/docker.socket:/var/run/docker.socket:ro
     extends:
       service: common
