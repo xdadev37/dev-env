@@ -5,7 +5,7 @@ services:
     image: node
     entrypoint: /usr/bin/tail -f /dev/null
     volumes:
-      - node:/usr/local/bin:rw
+      - node:/usr/local/bin
     extends:
       service: common
       file: ./common.yaml
@@ -14,23 +14,22 @@ services:
     image: mcr.microsoft.com/dotnet/sdk
     entrypoint: /usr/bin/tail -f /dev/null
     volumes:
-      - dotnet:/usr/bin:rw
+      - dotnet:/usr/bin
     extends:
       service: common
       file: ./common.yaml
 
   vscode:
     image: gitpod/openvscode-server
-    privileged: true
     environment:
       PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node
     volumes:
       - vscode:/home/workspace
       - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
       - /home/${HOME}:/home/${HOME}
-      - dotnet:/var/dotnet:ro
-      - node:/var/node:ro
-      - /var/run/docker.socket:/var/run/docker.socket:ro
+      - dotnet:/var/dotnet
+      - node:/var/node
+      - /var/run/docker.socket:/var/run/docker.socket
     extends:
       service: common
       file: ./common.yaml
