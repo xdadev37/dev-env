@@ -23,14 +23,23 @@ services:
     image: gitpod/openvscode-server
     working_dir: /home/${HOME}
     environment:
-      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node:/var/docker
     volumes:
       - vscode:/home/workspace
       - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
       - /home/${HOME}:/home/${HOME}
       - dotnet:/var/dotnet
       - node:/var/node
+      - docker:/var/docker
       - /var/run/docker.socket:/home/workspace/.docker/docker.socket
+    extends:
+      service: common
+      file: ./common.yaml
+
+  docker:
+    image: docker
+    volumes:
+      - docker:/usr/local/bin
     extends:
       service: common
       file: ./common.yaml
@@ -42,3 +51,5 @@ volumes:
     name: node
   dotnet:
     name: dotnet
+  docker:
+    name: docker
