@@ -16,6 +16,7 @@ services:
 
   node:
     image: node
+    entrypoint: /usr/bin/tail -f /dev/null
     volumes:
       - node:/usr/local/bin:rw
     extends:
@@ -24,6 +25,7 @@ services:
 
   donet:
     image: mcr.microsoft.com/dotnet/sdk
+    entrypoint: /usr/bin/tail -f /dev/null
     volumes:
       - donet:/usr/bin:rw
     extends:
