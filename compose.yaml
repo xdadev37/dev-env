@@ -31,7 +31,7 @@ services:
       - dotnet:/var/dotnet
       - node:/var/node
       - docker:/var/docker
-      - /var/run/docker.socket:/home/workspace/.docker/docker.socket
+      - /var/run/docker.socket:/var/run/docker.socket
     extends:
       service: common
       file: ./common.yaml
