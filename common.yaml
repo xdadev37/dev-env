@@ -4,4 +4,3 @@ services:
   common:
     network_mode: host
     restart: always
-    working_dir: /home/${HOME}

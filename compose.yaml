@@ -14,15 +14,16 @@ services:
     image: mcr.microsoft.com/dotnet/sdk
     entrypoint: /usr/bin/tail -f /dev/null
     volumes:
-      - dotnet:/usr/bin
+      - dotnet:/usr/share/dotnet
     extends:
       service: common
       file: ./common.yaml
 
   vscode:
     image: gitpod/openvscode-server
+    working_dir: /home/${HOME}
     environment:
-      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet/dotnet:/var/node/node
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node
     volumes:
       - vscode:/home/workspace
       - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
