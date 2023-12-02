@@ -13,6 +13,15 @@ services:
       service: common
       file: ./common.yaml
 
+  docker:
+    image: docker
+    volumes:
+      - usrLocal:/usr/local/bin:rw
+      - /var/run/docker.socket:/var/run/docker.socket:ro
+    extends:
+      service: common
+      file: ./common.yaml
+
   node:
     image: node
     volumes:
@@ -25,14 +34,6 @@ services:
     image: mcr.microsoft.com/dotnet/sdk
     volumes:
       - usr:/usr/bin:rw
-    extends:
-      service: common
-      file: ./common.yaml
-
-  docker:
-    image: docker
-    volumes:
-      - usrLocal:/usr/local/bin:rw
     extends:
       service: common
       file: ./common.yaml
