@@ -7,7 +7,7 @@ services:
       - vscode:/home/workspace
       - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
       - /home/${HOME}:/home/${HOME}
-      - donet:/usr/bin:ro
+      - dotnet:/usr/bin:ro
       - node:/usr/local/bin:ro
       - /var/run/docker.socket:/var/run/docker.socket:ro
     extends:
@@ -23,11 +23,11 @@ services:
       service: common
       file: ./common.yaml
 
-  donet:
+  dotnet:
     image: mcr.microsoft.com/dotnet/sdk
     entrypoint: /usr/bin/tail -f /dev/null
     volumes:
-      - donet:/usr/bin:rw
+      - dotnet:/usr/bin:rw
     extends:
       service: common
       file: ./common.yaml
@@ -37,5 +37,5 @@ volumes:
     name: vscode
   node:
     name: node
-  donet:
-    name: donet
+  dotnet:
+    name: dotnet
