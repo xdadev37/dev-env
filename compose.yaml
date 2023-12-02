@@ -1,19 +1,6 @@
 name: dev-env
 
 services:
-  vscode:
-    image: gitpod/openvscode-server
-    volumes:
-      - vscode:/home/workspace
-      - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
-      - /home/${HOME}:/home/${HOME}
-      - dotnet:/usr/bin:ro
-      - node:/usr/local/bin:ro
-      - /var/run/docker.socket:/var/run/docker.socket:ro
-    extends:
-      service: common
-      file: ./common.yaml
-
   node:
     image: node
     entrypoint: /usr/bin/tail -f /dev/null
@@ -28,6 +15,19 @@ services:
     entrypoint: /usr/bin/tail -f /dev/null
     volumes:
       - dotnet:/usr/bin:rw
+    extends:
+      service: common
+      file: ./common.yaml
+
+  vscode:
+    image: gitpod/openvscode-server
+    volumes:
+      - vscode:/home/workspace
+      - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
+      - /home/${HOME}:/home/${HOME}
+      - dotnet:/usr/bin:ro
+      - node:/usr/local/bin:ro
+      - /var/run/docker.socket:/var/run/docker.socket:ro
     extends:
       service: common
       file: ./common.yaml
