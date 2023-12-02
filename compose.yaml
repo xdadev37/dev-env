@@ -21,12 +21,14 @@ services:
 
   vscode:
     image: gitpod/openvscode-server
+    environment:
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node
     volumes:
       - vscode:/home/workspace
       - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
       - /home/${HOME}:/home/${HOME}
-      - dotnet:/usr/bin:ro
-      - node:/usr/local/bin:ro
+      - dotnet:/var/dotnet:ro
+      - node:/vat/node:ro
       - /var/run/docker.socket:/var/run/docker.socket:ro
     extends:
       service: common
