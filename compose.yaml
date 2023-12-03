@@ -6,6 +6,7 @@ services:
     entrypoint: /usr/bin/tail -f /dev/null
     volumes:
       - node:/usr/local/bin
+      - yarn:/opt/yarn-v1.22.19
     extends:
       service: common
       file: ./common.yaml
@@ -41,7 +42,7 @@ services:
   vscode:
     image: gitpod/openvscode-server
     environment:
-      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node:/var/pwsh:/var/docker
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node:/var/pwsh:/var/docker:/var/yarn/bin
     volumes:
       - vscode:/home/workspace
       - /home/${USERNAME}/.ssh:/home/openvscode-server/.ssh
@@ -51,6 +52,7 @@ services:
       - docker:/var/docker
       - node:/var/node
       - pwsh:/var/pwsh
+      - yarn:/var/yarn
       - libicu:/usr/lib/x86_64-linux-gnu
     extends:
       service: common
@@ -69,3 +71,5 @@ volumes:
     name: docker
   libicu:
     name: libicu
+  yarn:
+    name: yarn
