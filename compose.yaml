@@ -42,18 +42,18 @@ services:
   vscode:
     image: gitpod/openvscode-server
     environment:
-      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node:/var/pwsh:/var/docker:/var/yarn/bin
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/yarn/bin:/var/node:/var/pwsh:/var/docker
     volumes:
       - vscode:/home/workspace
-      - /home/${USERNAME}/.ssh:/home/openvscode-server/.ssh
+      - /home/${USERNAME}/.ssh:/home/openvscode-server/.ssh:ro
       - /home/${USERNAME}:/home/${USERNAME}
-      - /var/run/docker.sock:/var/run/docker.sock
-      - dotnet:/var/dotnet
-      - docker:/var/docker
-      - node:/var/node
-      - pwsh:/var/pwsh
-      - yarn:/var/yarn
-      - libicu:/usr/lib/x86_64-linux-gnu
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - dotnet:/var/dotnet:ro
+      - docker:/var/docker:ro
+      - node:/var/node:ro
+      - pwsh:/var/pwsh:ro
+      - yarn:/var/yarn:ro
+      - libicu:/usr/lib/x86_64-linux-gnu:ro
     extends:
       service: common
       file: ./common.yaml
