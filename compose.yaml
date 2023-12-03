@@ -19,17 +19,39 @@ services:
       service: common
       file: ./common.yaml
 
+  powershell:
+    image: mcr.microsoft.com/powershell
+    entrypoint: /usr/bin/tail -f /dev/null
+    volumes:
+      - pwsh:/opt/microsoft/powershell/7
+      - libicu:/usr/lib/x86_64-linux-gnu
+    extends:
+      service: common
+      file: ./common.yaml
+
+  docker:
+    image: docker
+    privileged: true
+    volumes:
+      - docker:/usr/local/bin
+    extends:
+      service: common
+      file: ./common.yaml
+
   vscode:
     image: gitpod/openvscode-server
-    working_dir: /home/${HOME}
     environment:
-      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/node:/var/pwsh:/var/docker
     volumes:
       - vscode:/home/workspace
-      - /home/${HOME}/.ssh:/home/openvscode-server/.ssh
-      - /home/${HOME}:/home/${HOME}
+      - /home/${USERNAME}/.ssh:/home/openvscode-server/.ssh
+      - /home/${USERNAME}:/home/${USERNAME}
+      - /var/run/docker.sock:/var/run/docker.sock
       - dotnet:/var/dotnet
+      - docker:/var/docker
       - node:/var/node
+      - pwsh:/var/pwsh
+      - libicu:/usr/lib/x86_64-linux-gnu
     extends:
       service: common
       file: ./common.yaml
@@ -41,3 +63,9 @@ volumes:
     name: node
   dotnet:
     name: dotnet
+  pwsh:
+    name: pwsh
+  docker:
+    name: docker
+  libicu:
+    name: libicu
