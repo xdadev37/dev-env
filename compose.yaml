@@ -92,6 +92,7 @@ services:
 
   vscode:
     image: gitpod/openvscode-server
+    user: root
     environment:
       PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/dotnet:/var/yarn/bin:/var/node:/var/pwsh:/var/docker:/var/git/bin:/var/openssh
       LD_LIBRARY_PATH: /var/libcrypto:/var/libicu
