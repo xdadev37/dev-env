@@ -116,6 +116,7 @@ services:
       - userSbin:/usr/sbin:ro
       - localBin:/usr/local/bin:ro
       - localSbin:/usr/local/sbin:ro
+      - /home/${USERNAME}/.local/share/fonts:/usr/local/share/fonts:ro
     extends:
       service: common
       file: ./common.yaml
