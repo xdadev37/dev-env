@@ -98,7 +98,7 @@ services:
       LD_LIBRARY_PATH: /var/libcrypto:/var/libicu
     volumes:
       - vscode:/home/workspace
-      - /home/${USERNAME}/.ssh:/home/openvscode-server/.ssh
+      - /home/${USERNAME}/.ssh:/root/.ssh
       - /home/${USERNAME}:/home/${USERNAME}
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - dotnet:/var/dotnet:ro
