@@ -55,8 +55,8 @@ services:
       service: common
       file: ./common.yaml
 
-  ubuntu:
-    image: ubuntu
+  almalinux:
+    image: almalinux
     entrypoint: /usr/bin/tail -f /dev/null
     volumes:
       - bin:/bin
