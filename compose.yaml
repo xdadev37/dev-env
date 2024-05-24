@@ -114,6 +114,7 @@ services:
       - docker:/var/docker:ro
       - node:/var/node:ro
       - zsh:/var/zsh:ro
+      - zshdata:/root/.zsh:ro
       # - yarn:/var/yarn:ro
       - git:/var/git:ro
       # - openssh:/var/openssh:ro
@@ -152,6 +153,8 @@ volumes:
     name: dotnet
   zsh:
     name: zsh
+  zshdata:
+    name: zshdata
   docker:
     name: docker
   bun:
