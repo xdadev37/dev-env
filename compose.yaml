@@ -80,7 +80,7 @@ services:
 
   bun:
     image: oven/bun
-    privileged: true
+    entrypoint: /usr/bin/tail -f /dev/null
     volumes:
       - bun:/usr/local/bin
     extends:
