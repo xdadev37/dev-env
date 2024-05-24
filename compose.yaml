@@ -24,7 +24,7 @@ services:
     image: moby/buildkit
     entrypoint: /usr/bin/tail -f /dev/null
     volumes:
-      - git:/usr/bin/git
+      - git:/usr/bin
       # - openssh:/usr/bin
       # - libcrypto:/usr/lib/x86_64-linux-gnu
     extends:
